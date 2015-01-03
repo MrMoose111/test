@@ -1,9 +1,12 @@
 package test;
 
+import java.util.function.DoubleFunction;
+
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println("This is a test");
+		DoubleFunction<Double> f = x -> x*x*x;
+		System.out.println(Integrator.integrate(f, 0, 200));
 	}
 
 }

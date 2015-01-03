@@ -19,12 +19,12 @@ public class Integrator {
 			double high = iterator.next();
 			iterator.previous();
 			
-			if(low-high>.01||f.apply(low) - f.apply(high)>.01){
-				iterator.add(low-high);
+			if(high-low>1||Math.abs(f.apply(high) - f.apply(low))>10){
+				iterator.add((low+high)/2);
 				iterator.previous();
 				iterator.previous();
 			}
-			
+			//System.out.println(list);
 		}
 		
 		double result = 0;
@@ -35,6 +35,7 @@ public class Integrator {
 			if(!iterator.hasNext())break;
 			double high = iterator.next();
 			result += (high-low)*(f.apply(high)+f.apply(low))/2;
+			iterator.previous();
 		}
 		
 		return result;
